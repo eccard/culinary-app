@@ -1,4 +1,4 @@
-package eccard.adnd.culinary.ui.receiptdetail;
+package eccard.adnd.culinary.ui.recipdetail;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +13,7 @@ import eccard.adnd.culinary.R;
 import eccard.adnd.culinary.network.model.Ingredient;
 import eccard.adnd.culinary.network.model.Step;
 
-public class ReceiptDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecipDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Ingredient> ingredients;
     private List<Step> steps;
@@ -44,7 +44,7 @@ public class ReceiptDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
 
-        RecyclerView.ViewHolder viewHolder = null;
+        RecyclerView.ViewHolder viewHolder;
         View view;
 
         switch (viewType){
@@ -146,7 +146,7 @@ public class ReceiptDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     class IngredientViewHolder extends RecyclerView.ViewHolder{
-        TextView ingName;
+        final TextView ingName;
         TextView ingQnt;
         public IngredientViewHolder(@NonNull View itemView) {
             super(itemView);

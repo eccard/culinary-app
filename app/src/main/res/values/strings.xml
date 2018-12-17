@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Receipts</string>
-    <string name="order_by">Order By</string>
+    <string name="app_name">Recipes</string>
     <string name="receipt_list_item">Receipt item</string>
     <string name="generic_error">We got a connection error!</string>
     <string name="retry">Retry</string>
@@ -11,5 +10,6 @@
     <string name="widget_recipe_title">Recipe Title</string>
     <string name="widget_empty">No recipes added</string>
     <string name="ingredient_quantity_and_measure">%1$.2f %2$s</string>
+    <string name="steps">Steps</string>
 
 </resources>

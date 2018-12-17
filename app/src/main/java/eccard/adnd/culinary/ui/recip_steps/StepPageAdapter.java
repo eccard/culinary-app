@@ -1,4 +1,4 @@
-package eccard.adnd.culinary.ui.receipt_steps;
+package eccard.adnd.culinary.ui.recip_steps;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +11,7 @@ import eccard.adnd.culinary.network.model.Step;
 
 class StepPageAdapter extends FragmentStatePagerAdapter {
 
-    private ArrayList<Step> stepArrayList;
+    private final ArrayList<Step> stepArrayList;
 
     public StepPageAdapter(FragmentManager fm,
                            ArrayList<Step> stepArrayList) {

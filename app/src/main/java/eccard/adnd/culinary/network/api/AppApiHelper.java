@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import eccard.adnd.culinary.BuildConfig;
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
@@ -61,7 +61,7 @@ public class AppApiHelper implements ApiHelper{
     }
 
     @Override
-    public Single<List<Recipt>> doGetRecipeApiCall() {
+    public Single<List<Recip>> doGetRecipeApiCall() {
         return moviesApi.doGetPopularMovies();
     }
 }

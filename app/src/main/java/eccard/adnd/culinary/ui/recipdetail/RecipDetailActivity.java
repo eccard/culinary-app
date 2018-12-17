@@ -1,4 +1,4 @@
-package eccard.adnd.culinary.ui.receiptdetail;
+package eccard.adnd.culinary.ui.recipdetail;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,23 +12,23 @@ import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import eccard.adnd.culinary.R;
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 import eccard.adnd.culinary.network.model.Step;
-import eccard.adnd.culinary.ui.receipt_steps.StepDetailFrg;
-import eccard.adnd.culinary.ui.receipt_steps.StepDetailsActivity;
+import eccard.adnd.culinary.ui.recip_steps.StepDetailFrg;
+import eccard.adnd.culinary.ui.recip_steps.StepDetailsActivity;
 
-public class ReceiptDetailActivity extends AppCompatActivity implements ReceiptDetailsAdapter.OnStepClickListener{
+public class RecipDetailActivity extends AppCompatActivity implements RecipDetailsAdapter.OnStepClickListener{
 
     private boolean isTablet;
 
-    static public Intent newIntent(Context context, Recipt recipt){
-        Intent i = new Intent(context, ReceiptDetailActivity.class);
-        i.putExtra(Recipt.class.getSimpleName(),recipt);
+    static public Intent newIntent(Context context, Recip recip){
+        Intent i = new Intent(context, RecipDetailActivity.class);
+        i.putExtra(Recip.class.getSimpleName(), recip);
         return i;
     }
 
 
-    Recipt receiptExtra;
+    Recip receiptExtra;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,8 +40,8 @@ public class ReceiptDetailActivity extends AppCompatActivity implements ReceiptD
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        if (intent.hasExtra(Recipt.class.getSimpleName())) {
-            receiptExtra = intent.getParcelableExtra(Recipt.class.getSimpleName());
+        if (intent.hasExtra(Recip.class.getSimpleName())) {
+            receiptExtra = intent.getParcelableExtra(Recip.class.getSimpleName());
             setUpViews();
         }
 
@@ -60,9 +60,9 @@ public class ReceiptDetailActivity extends AppCompatActivity implements ReceiptD
         FragmentManager fragMan = getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragMan.beginTransaction();
 
-        Fragment fragment = new ReceiptDetailFrg();
-        fragTransaction.add(R.id.recipe_container, fragment , ReceiptDetailFrg.class.getSimpleName()) ;
-        fragTransaction.commit();
+        Fragment fragment = new RecipDetailFrg();
+        fragTransaction.add(R.id.recipe_container, fragment , RecipDetailFrg.class.getSimpleName()) ;
+
 
         if (isTablet){
 
@@ -70,11 +70,10 @@ public class ReceiptDetailActivity extends AppCompatActivity implements ReceiptD
             Fragment stepDetailFrg = StepDetailFrg.newInstance(step);
 
             fragTransaction.replace(R.id.container_step_detail, stepDetailFrg , StepDetailFrg.class.getSimpleName()) ;
-            fragTransaction.commit();
 
         }
 
-
+        fragTransaction.commit();
 
     }
 

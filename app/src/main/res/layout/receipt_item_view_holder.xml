@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/receipt_item"
+<FrameLayout
     android:layout_width="@dimen/img_view_recycler_view_holder_width"
     android:layout_height="@dimen/img_view_recycler_view_holder_height"
-    android:contentDescription="@string/receipt_list_item"
-    android:background="?selectableItemBackground"
-    android:textColor="@color/colorAccent"
-    android:gravity="bottom|center"
-    />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_event_note_black_18dp"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/receipt_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/receipt_list_item"
+        android:textColor="@color/colorAccent"
+        android:gravity="bottom|center"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_gravity="bottom|center"
+        tools:text="aloo"
+        />
+</FrameLayout>

@@ -10,16 +10,16 @@ import java.util.List;
 
 import eccard.adnd.culinary.R;
 import eccard.adnd.culinary.network.model.Ingredient;
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 import eccard.adnd.culinary.network.share_prefs.AppSharePref;
 
 public class IngredientRemoteViewServiceFactory implements RemoteViewsService.RemoteViewsFactory {
 
-    Context context;
+    final Context context;
     AppSharePref appSharePref;
 
 
-    private Recipt recipt;
+    private Recip recip;
     private List<Ingredient> ingredients;
 
     public IngredientRemoteViewServiceFactory(Context context) {
@@ -36,8 +36,8 @@ public class IngredientRemoteViewServiceFactory implements RemoteViewsService.Re
     @Override
     public void onDataSetChanged() {
 
-        recipt = appSharePref.loadReceipt();
-        ingredients = recipt.getIngredients();
+        recip = appSharePref.loadReceipt();
+        ingredients = recip.getIngredients();
 
 
     }
@@ -73,7 +73,7 @@ public class IngredientRemoteViewServiceFactory implements RemoteViewsService.Re
         views.setTextViewText(R.id.textView_ingredient_quantity_and_measure, quantityAndMeasure);
 
         Intent fillIntent = new Intent();
-        fillIntent.putExtra(Recipt.class.getSimpleName(), recipt);
+        fillIntent.putExtra(Recip.class.getSimpleName(), recip);
         views.setOnClickFillInIntent(R.id.textView_ingredient_title, fillIntent);
 
         return views;

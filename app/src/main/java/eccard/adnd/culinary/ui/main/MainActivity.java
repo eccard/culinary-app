@@ -19,8 +19,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import eccard.adnd.culinary.R;
-import eccard.adnd.culinary.network.model.Recipt;
-import eccard.adnd.culinary.ui.receiptdetail.ReceiptDetailActivity;
+import eccard.adnd.culinary.network.model.Recip;
+import eccard.adnd.culinary.ui.recipdetail.RecipDetailActivity;
 
 public class MainActivity extends AppCompatActivity implements ReceiptAdapter.OnMovieClickListener, GetReceiptsFragment.GetMoviesCallbacks {
 
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements ReceiptAdapter.On
     @SuppressWarnings("WeakerAccess")
     @BindView(R.id.tv_generic_error)
     TextView mTvGenericError;
-    private boolean isTablet;
 
     @SuppressWarnings("WeakerAccess")
     @OnClick(R.id.btn_retry)
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements ReceiptAdapter.On
 
             getMoviePage();
         } else {
-            onReceiptResult(mGetReceiptsFrg.getRetainRecipt());
+            onReceiptResult(mGetReceiptsFrg.getRetainRecip());
         }
     }
 
@@ -79,8 +78,6 @@ public class MainActivity extends AppCompatActivity implements ReceiptAdapter.On
     }
 
     private void setUpViews() {
-
-        isTablet = getResources().getBoolean(R.bool.isTablet);
 
         GridLayoutManager layoutManager;
 
@@ -127,25 +124,16 @@ public class MainActivity extends AppCompatActivity implements ReceiptAdapter.On
     }
 
 
-//    @Override
-//    public void onMovieItemClick(MovieResult movie) {
-//        Intent intent = StepDetailsActivity.newIntent(MainActivity.this);
-//        intent.putExtra(MovieResult.class.getSimpleName(),movie);
-//
-//        startActivity(intent);
-//    }
-
-
     @Override
-    public void onReceiptItemClick(Recipt receipt) {
-        Intent i = ReceiptDetailActivity.newIntent(this,receipt);
+    public void onReceiptItemClick(Recip receipt) {
+        Intent i = RecipDetailActivity.newIntent(this,receipt);
         startActivity(i);
     }
 
     @Override
-    public void onReceiptResult(List<Recipt> recipt) {
+    public void onReceiptResult(List<Recip> recip) {
         showReceipts();
-        receiptAdapter.setReceipts(recipt);
+        receiptAdapter.setReceipts(recip);
         receiptAdapter.notifyDataSetChanged();
     }
 

@@ -1,4 +1,4 @@
-package eccard.adnd.culinary.ui.receiptdetail;
+package eccard.adnd.culinary.ui.recipdetail;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,16 +18,16 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import eccard.adnd.culinary.R;
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 import eccard.adnd.culinary.network.share_prefs.AppSharePref;
 import eccard.adnd.culinary.widget.RecipeAppWidget;
 
-public class ReceiptDetailFrg extends Fragment {
+public class RecipDetailFrg extends Fragment {
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecycleView;
 
-    Recipt receiptExtra;
+    Recip receiptExtra;
 
     AppSharePref appSharePref;
 
@@ -49,8 +49,8 @@ public class ReceiptDetailFrg extends Fragment {
 
 
         Intent intent = getActivity().getIntent();
-        if (intent.hasExtra(Recipt.class.getSimpleName())) {
-            receiptExtra = intent.getParcelableExtra(Recipt.class.getSimpleName());
+        if (intent.hasExtra(Recip.class.getSimpleName())) {
+            receiptExtra = intent.getParcelableExtra(Recip.class.getSimpleName());
             setUpViews();
         }
 
@@ -82,12 +82,12 @@ public class ReceiptDetailFrg extends Fragment {
 
         mRecycleView.setLayoutManager(layoutManager);
         mRecycleView.setHasFixedSize(true);
-        ReceiptDetailsAdapter receiptDetailsAdapter = new ReceiptDetailsAdapter();
-        receiptDetailsAdapter.setOnStepClickListener((ReceiptDetailActivity)getActivity());
-        mRecycleView.setAdapter(receiptDetailsAdapter);
+        RecipDetailsAdapter recipDetailsAdapter = new RecipDetailsAdapter();
+        recipDetailsAdapter.setOnStepClickListener((RecipDetailActivity)getActivity());
+        mRecycleView.setAdapter(recipDetailsAdapter);
 
-        receiptDetailsAdapter.setData(receiptExtra.getIngredients(), receiptExtra.getSteps());
-        receiptDetailsAdapter.notifyDataSetChanged();
+        recipDetailsAdapter.setData(receiptExtra.getIngredients(), receiptExtra.getSteps());
+        recipDetailsAdapter.notifyDataSetChanged();
 
     }
 }

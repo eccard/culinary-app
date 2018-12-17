@@ -1,4 +1,4 @@
-package eccard.adnd.culinary.ui.receipt_steps;
+package eccard.adnd.culinary.ui.recip_steps;
 
 import android.content.Context;
 import android.content.Intent;
@@ -43,7 +43,7 @@ public class StepDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_detail);
+        setContentView(R.layout.activity_recip_detail);
 
         ViewPager mViewPager = findViewById(R.id.pager);
 

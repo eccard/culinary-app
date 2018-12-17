@@ -6,12 +6,12 @@ import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 
 public class AppSharePref implements SharePrefes {
 
     Context context;
-    SharedPreferences sharedPreferences;
+    final SharedPreferences sharedPreferences;
     private final Gson gson;
 
 
@@ -22,23 +22,23 @@ public class AppSharePref implements SharePrefes {
     }
 
     @Override
-    public void saveReceipt(Recipt recipt) {
+    public void saveReceipt(Recip recip) {
 
-        String recipeJson = gson.toJson(recipt, Recipt.class);
+        String recipeJson = gson.toJson(recip, Recip.class);
 
-        sharedPreferences.edit().putString(Recipt.class.getSimpleName(), recipeJson).apply();
+        sharedPreferences.edit().putString(Recip.class.getSimpleName(), recipeJson).apply();
 
     }
 
     @Override
-    public Recipt loadReceipt() {
+    public Recip loadReceipt() {
 
         try {
 
             String recipeJson =
-                    sharedPreferences.getString(Recipt.class.getSimpleName(), "{}");
+                    sharedPreferences.getString(Recip.class.getSimpleName(), "{}");
 
-            return gson.fromJson(recipeJson, Recipt.class);
+            return gson.fromJson(recipeJson, Recip.class);
 
         } catch (Exception exception) {
 

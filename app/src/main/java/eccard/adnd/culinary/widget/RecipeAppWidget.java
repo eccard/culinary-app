@@ -9,10 +9,9 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 
 import eccard.adnd.culinary.R;
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 import eccard.adnd.culinary.network.share_prefs.AppSharePref;
-import eccard.adnd.culinary.ui.receiptdetail.ReceiptDetailActivity;
-import eccard.adnd.culinary.ui.receiptdetail.ReceiptDetailsAdapter;
+import eccard.adnd.culinary.ui.recipdetail.RecipDetailActivity;
 
 public class RecipeAppWidget extends AppWidgetProvider {
 
@@ -35,10 +34,10 @@ public class RecipeAppWidget extends AppWidgetProvider {
 
         RemoteViews views = getIngredientsListRemoteView(context);
 
-        Recipt recipt = appSharePref.loadReceipt();
+        Recip recip = appSharePref.loadReceipt();
 
-        if (recipt != null){
-            views.setTextViewText(R.id.appwidget_recipe_title,recipt.getName());
+        if (recip != null){
+            views.setTextViewText(R.id.appwidget_recipe_title, recip.getName());
         }
 
         appWidgetManager.updateAppWidget(appWidgetId,views);
@@ -69,7 +68,7 @@ public class RecipeAppWidget extends AppWidgetProvider {
         views.setRemoteAdapter(R.id.appwidget_listView_ingredients, intent);
         views.setEmptyView(R.id.appwidget_listView_ingredients, R.id.appwidget_empty_view);
 
-        Intent intentPending = new Intent(context, ReceiptDetailActivity.class);
+        Intent intentPending = new Intent(context, RecipDetailActivity.class);
         PendingIntent pendingIntent =
                 PendingIntent.getActivity(context, 0, intentPending, PendingIntent.FLAG_UPDATE_CURRENT);
 

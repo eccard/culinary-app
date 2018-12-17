@@ -9,7 +9,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Recipt implements Parcelable {
+public class Recip implements Parcelable {
     @SerializedName("id")
     @Expose
     private int id;
@@ -49,24 +49,8 @@ public class Recipt implements Parcelable {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
     public ArrayList<Step> getSteps() {
         return steps;
-    }
-
-    public void setSteps(ArrayList<Step> steps) {
-        this.steps = steps;
-    }
-
-    public int getServings() {
-        return servings;
-    }
-
-    public void setServings(int servings) {
-        this.servings = servings;
     }
 
     public String getImage() {
@@ -93,28 +77,28 @@ public class Recipt implements Parcelable {
         dest.writeString(this.image);
     }
 
-    public Recipt() {
+    public Recip() {
     }
 
-    protected Recipt(Parcel in) {
+    protected Recip(Parcel in) {
         this.id = in.readInt();
         this.name = in.readString();
-        this.ingredients = new ArrayList<Ingredient>();
+        this.ingredients = new ArrayList<>();
         in.readList(this.ingredients, Ingredient.class.getClassLoader());
         this.steps = in.createTypedArrayList(Step.CREATOR);
         this.servings = in.readInt();
         this.image = in.readString();
     }
 
-    public static final Creator<Recipt> CREATOR = new Creator<Recipt>() {
+    public static final Creator<Recip> CREATOR = new Creator<Recip>() {
         @Override
-        public Recipt createFromParcel(Parcel source) {
-            return new Recipt(source);
+        public Recip createFromParcel(Parcel source) {
+            return new Recip(source);
         }
 
         @Override
-        public Recipt[] newArray(int size) {
-            return new Recipt[size];
+        public Recip[] newArray(int size) {
+            return new Recip[size];
         }
     };
 }

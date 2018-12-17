@@ -18,14 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.receipt_steps.StepDetailsActivity"
+        <activity android:name=".ui.recip_steps.StepDetailsActivity"
             android:parentActivityName=".ui.main.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.main.MainActivity" />
         </activity>
 
-        <activity android:name=".ui.receiptdetail.ReceiptDetailActivity"
+        <activity android:name=".ui.recipdetail.RecipDetailActivity"
             android:parentActivityName=".ui.main.MainActivity"
             android:launchMode="singleTop">
 

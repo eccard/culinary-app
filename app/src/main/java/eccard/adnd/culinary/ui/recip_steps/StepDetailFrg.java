@@ -1,4 +1,4 @@
-package eccard.adnd.culinary.ui.receipt_steps;
+package eccard.adnd.culinary.ui.recip_steps;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,7 +31,6 @@ public class StepDetailFrg extends Fragment {
     private PlayerView playerView;
     private long playerTimePosition;
     private ExoPlayer exoPlayer;
-    private TextView tvStepDescription;
 
     private Step stepExtra;
     public static StepDetailFrg newInstance(Step step) {
@@ -70,7 +69,7 @@ public class StepDetailFrg extends Fragment {
         playerView = view.findViewById(R.id.playerView);
         playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
 
-        tvStepDescription = view.findViewById(R.id.tv_step_description);
+        TextView tvStepDescription = view.findViewById(R.id.tv_step_description);
 
         if (stepExtra.getDescription() != null){
             tvStepDescription.setText(stepExtra.getDescription());

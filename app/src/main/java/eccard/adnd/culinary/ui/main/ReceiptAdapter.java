@@ -10,22 +10,18 @@ import android.widget.TextView;
 import java.util.List;
 
 import eccard.adnd.culinary.R;
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 
 public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.ItemViewHolder>{
 
-    private List<Recipt> receipts;
+    private List<Recip> receipts;
 
-    public List<Recipt> getReceipts() {
-        return receipts;
-    }
-
-    public void setReceipts(List<Recipt> receipts) {
+    public void setReceipts(List<Recip> receipts) {
         this.receipts = receipts;
     }
 
     public interface OnMovieClickListener{
-        void onReceiptItemClick(Recipt receipt);
+        void onReceiptItemClick(Recip receipt);
 
     }
 
@@ -49,8 +45,8 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.ItemView
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int i) {
 
-        Recipt recipt = receipts.get(i);
-        itemViewHolder.recipt.setText(recipt.getName());
+        Recip recip = receipts.get(i);
+        itemViewHolder.recipt.setText(recip.getName());
     }
 
     @Override

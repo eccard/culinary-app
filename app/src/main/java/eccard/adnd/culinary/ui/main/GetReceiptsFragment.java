@@ -9,7 +9,7 @@ import android.util.Log;
 import java.util.List;
 
 import eccard.adnd.culinary.network.api.AppApiHelper;
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -20,20 +20,20 @@ public class GetReceiptsFragment extends Fragment {
 
     public static final String TAG = GetReceiptsFragment.class.getSimpleName();
 
-    private List<Recipt> retainRecipt = null;
+    private List<Recip> retainRecip = null;
 
-    public List<Recipt> getRetainRecipt() {
-        return retainRecipt;
+    public List<Recip> getRetainRecip() {
+        return retainRecip;
     }
 
-    public void setRetainRecipt(List<Recipt> retainRecipt) {
-        this.retainRecipt = retainRecipt;
+    public void setRetainRecip(List<Recip> retainRecip) {
+        this.retainRecip = retainRecip;
     }
 
     private CompositeDisposable compositeDisposable;
 
     interface GetMoviesCallbacks {
-        void onReceiptResult(List<Recipt> recipt);
+        void onReceiptResult(List<Recip> recip);
         void onReceiptError(Throwable throwable);
     }
 
@@ -50,12 +50,6 @@ public class GetReceiptsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setRetainInstance(true);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-//        removeObservers();
     }
 
     @Override
@@ -76,14 +70,14 @@ public class GetReceiptsFragment extends Fragment {
                 .doGetRecipeApiCall()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<Recipt>>() {
+                .subscribe(new Consumer<List<Recip>>() {
                     @Override
-                    public void accept(List<Recipt> recipt) throws Exception {
+                    public void accept(List<Recip> recip) throws Exception {
 
-                        setRetainRecipt(recipt);
+                        setRetainRecip(recip);
 
                         if (mCallbacks != null) {
-                            mCallbacks.onReceiptResult(recipt);
+                            mCallbacks.onReceiptResult(recip);
                         } else {
                             Log.e(TAG, "mCallbacks == nul");
                         }
@@ -93,7 +87,7 @@ public class GetReceiptsFragment extends Fragment {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
 
-                        setRetainRecipt(null);
+                        setRetainRecip(null);
 
                         Log.e(TAG, throwable.toString());
                         if (mCallbacks != null) {

@@ -1,10 +1,10 @@
 package eccard.adnd.culinary.network.share_prefs;
 
-import eccard.adnd.culinary.network.model.Recipt;
+import eccard.adnd.culinary.network.model.Recip;
 
 public interface SharePrefes {
 
-    void saveReceipt(Recipt recipt);
+    void saveReceipt(Recip recip);
 
-    Recipt loadReceipt();
+    Recip loadReceipt();
 }
