@@ -5,7 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -108,6 +111,10 @@ public class RecipDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 String stepText = stepPosition + 1 + " - " +step.getShortDescription();
                 stepViewHolder.tvStepName.setText(stepText);
 
+                if (isValidThumbnail(step.getThumbnailURL())){
+                    Picasso.get().load(step.getThumbnailURL()).into(stepViewHolder.imgStepThumbnail);
+                }
+
                 break;
 
             default:
@@ -119,6 +126,18 @@ public class RecipDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         }
 
+    }
+
+    private boolean isValidThumbnail(String pathToThumbnail){
+        boolean ret = false;
+        if ( pathToThumbnail != null && !pathToThumbnail.isEmpty()){
+            String fileType = pathToThumbnail.substring(pathToThumbnail.lastIndexOf("."), pathToThumbnail.length());
+            if (fileType.equalsIgnoreCase(".jpg") || fileType.equalsIgnoreCase(".png")){
+                ret = true;
+            }
+        }
+
+        return ret;
     }
 
     @Override
@@ -156,9 +175,11 @@ public class RecipDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     class StepViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ImageView imgStepThumbnail;
         TextView tvStepName;
         public StepViewHolder(@NonNull View itemView) {
             super(itemView);
+            imgStepThumbnail = itemView.findViewById(R.id.imv_step_thumbnail);
             tvStepName = itemView.findViewById(R.id.tv_step_name);
             itemView.setOnClickListener(this);
         }

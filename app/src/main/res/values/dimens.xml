@@ -12,5 +12,8 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
 -->
     <dimen name="widget_margin">8dp</dimen>
 
+    <dimen name="step_thumbnail_width">36dp</dimen>
+    <dimen name="step_thumbnail_height">36dp</dimen>
+
 
 </resources>
