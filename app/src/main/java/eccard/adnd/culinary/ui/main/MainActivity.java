@@ -2,6 +2,8 @@ package eccard.adnd.culinary.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,12 +22,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import eccard.adnd.culinary.R;
 import eccard.adnd.culinary.network.model.Recip;
+import eccard.adnd.culinary.ui.SimpleIdlingResource;
 import eccard.adnd.culinary.ui.recipdetail.RecipDetailActivity;
 
 public class MainActivity extends AppCompatActivity implements ReceiptAdapter.OnMovieClickListener, GetReceiptsFragment.GetMoviesCallbacks {
 
     @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.rv_movies)
+    @BindView(R.id.rv_recipes)
     RecyclerView mRecycleView;
 
     @SuppressWarnings("WeakerAccess")
@@ -47,12 +50,14 @@ public class MainActivity extends AppCompatActivity implements ReceiptAdapter.On
 
     private ReceiptAdapter receiptAdapter;
     private GetReceiptsFragment mGetReceiptsFrg;
+    private SimpleIdlingResource mIdlingResource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setIdleState(false);
 
         ButterKnife.bind(this);
 
@@ -132,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements ReceiptAdapter.On
 
     @Override
     public void onReceiptResult(List<Recip> recip) {
+        setIdleState(true);
         showReceipts();
         receiptAdapter.setReceipts(recip);
         receiptAdapter.notifyDataSetChanged();
@@ -142,4 +148,19 @@ public class MainActivity extends AppCompatActivity implements ReceiptAdapter.On
         showLoadingError();
     }
 
+    /**
+     * Only called from test, creates and returns a new {@link SimpleIdlingResource}.
+     */
+    @NonNull
+    @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
+    public SimpleIdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new SimpleIdlingResource();
+        }
+        return mIdlingResource;
+    }
+
+    private void setIdleState(boolean isIdle){
+        getIdlingResource().setIdleState(isIdle);
+    }
 }

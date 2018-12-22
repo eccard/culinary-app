@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tv_step_name"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?selectableItemBackground"
-    android:textStyle="bold"
-    android:padding="10dp"
-    android:textSize="16sp"
-    />
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp">
+
+
+    <TextView
+
+        android:id="@+id/tv_step_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="16sp"
+        tools:text="um odis"
+        />
+
+    <ImageView
+        android:id="@+id/imv_step_thumbnail"
+        android:layout_width="@dimen/step_thumbnail_width"
+        android:layout_height="@dimen/step_thumbnail_height"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:layout_gravity="end|center_vertical"
+        android:src="@drawable/ic_baseline_play_arrow_24px"
+        />
+
+
+</FrameLayout>
     <!--android:gravity="center"-->
 
