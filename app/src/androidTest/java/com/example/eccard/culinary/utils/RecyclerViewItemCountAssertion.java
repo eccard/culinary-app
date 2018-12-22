@@ -1,4 +1,4 @@
-package com.example.eccard.culinary;
+package com.example.eccard.culinary.utils;
 
 
 import android.support.test.espresso.NoMatchingViewException;

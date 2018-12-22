@@ -1,4 +1,4 @@
-package com.example.eccard.culinary;
+package com.example.eccard.culinary.utils;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
