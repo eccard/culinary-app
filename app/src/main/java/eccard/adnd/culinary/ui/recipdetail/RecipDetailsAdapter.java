@@ -144,7 +144,7 @@ public class RecipDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public int getItemCount() {
         int totalItems = 0;
 
-        if(ingredients != null) totalItems += ingredients.size()-1;
+        if(ingredients != null) totalItems += ingredients.size();
 
         if(steps != null) totalItems += steps.size();
 
