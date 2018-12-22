@@ -25,7 +25,7 @@ import eccard.adnd.culinary.ui.recipdetail.RecipDetailActivity;
 public class MainActivity extends AppCompatActivity implements ReceiptAdapter.OnMovieClickListener, GetReceiptsFragment.GetMoviesCallbacks {
 
     @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.rv_movies)
+    @BindView(R.id.rv_recipes)
     RecyclerView mRecycleView;
 
     @SuppressWarnings("WeakerAccess")
